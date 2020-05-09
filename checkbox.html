@@ -1,0 +1,16 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+
+<span class="totalchecked">0</span>
+<script>
+        $('input[type=checkbox]').change(function(){
+            var number = $('input[type=checkbox]:checked').length;
+            $('.totalchecked').html(number);
+        });
+</script>
+</html>

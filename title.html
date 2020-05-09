@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Before</title>
+<script>
+function updateTitle() {
+    setTimeout(function() {
+        document.getElementById('demo').innerHTML = 'After';
+    }, 2000);}
+</script>
+</head>
+<body onload="updateTitle()">
+<h1 id ="demo">Before</h1>
+<div id="CounterVisitor">
+          <span class="counter-item">0</span>
+          <span class="counter-item">0</span>
+          <span class="counter-item">1</span>
+          <span class="counter-item">1</span>
+          <span class="counter-item">8</span>
+          <span class="counter-item">4</span>
+</div>
+</body>
+</html>

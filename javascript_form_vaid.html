@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>Design Studio</title>
+</head>
+<body>
+<div class="header">
+<nav>
+<ul>
+<li class="current"><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="form.html">Login</a></li>
+</ul>
+</nav>
+</div>
+<div class="card">
+    <h1 style="text-align:center;color:white; margin:0px; background-color:black;"><i>Registration form</i></h1>
+    <form align="center" method ='POST'action="submit">
+    <table align="center">
+    <tr>
+        <td> <h3 style="display:inline-block; "><i class="fa fa-user" aria-hidden="true"></i>Name</h3></td>
+        <td> <input style="display:inline-block;" type="text" class="" required>
+        </td>
+    </tr>
+    <tr>
+        <td><h3 style="display:inline-block;"><i class="fa fa-envelope" aria-hidden="true"></i>
+Email</h3></td>
+        <td><input style="display:inline-block;" name ="email" type="email"  required ></td>
+    </tr>
+    <tr>
+     <tr>
+        <td><h3 style="display:inline-block;"><i class="fa fa-phone" aria-hidden="true"></i>
+Number</h3></td>
+        <td><input style="display:inline-block;" type="number"  min="1000000000" max="9999999999" required ></td>
+    </tr>
+    <tr>
+        <td><h3 style="display:inline-block;"><i class="fa fa-key" aria-hidden="true"></i>
+Password</h3></td>
+        <td> <input style="display:inline-block;" type="password" name =" password1" id ="pass" min="8" max="12" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"></td>
+    </tr>
+    <tr>
+        <td><h3 style="display:inline-block;"><i class="fa fa-key" aria-hidden="true"></i>
+Confrim Password</h3></td>
+        <td> <input style="display:inline-block;" type="password" name =" password2" id = "confirm_pass"  required></td>
+    </tr>
+    <tr>
+        <td> <h3 style="display:inline-block;"><i class="fa fa-male" aria-hidden="true"></i>
+Gender</h3></td>
+        <td> <input type="radio" style="display:inline-block;" required name="gender" value="male" checked > Male
+        <input type="radio" style="display:inline-block;" required name="gender" value="female"> Female
+        <input type="radio" style="display:inline-block;" required name="gender" value="other"> Other</td>
+    </tr>
+     <tr>
+        <td> <h3 style="display:inline-block;"><i class="fa fa-male" aria-hidden="true"></i>
+City</h3></td>
+        <td> <select id="prov"></select>
+    </select></td>
+    </tr>
+    <tr>
+        <td> <h3 style="display:inline-block;"><i class="fa fa-male" aria-hidden="true"></i>
+Region</h3></td>
+        <td> <select id="town"></select>
+    </select></td>
+    </tr>
+    <tr>
+        <td><h3 style="display:inline-block;"><i class="fa fa-code" aria-hidden="true"></i>
+Description</h3></td>
+        <td><textarea ROWS="4" cols ="50" style="display:inline-block;" required  maxlength="140" minlength="10" ></textarea></td>
+    </tr>
+    <tr>
+        <td><h3 Pets align="left"style="display:inline-block; "></i> Choose your option</h3></td>
+        <td>
+          <input type="checkbox" class="vehicle1" style="display:inline-block;"  value="Shop" onclick='countCheckboxes();'> Shop
+        <input type="checkbox" class="vehicle1" style="display:inline-block;"  value="Sell"   onclick='countCheckboxes();'> Sell
+        <input type="checkbox" class="vehicle1" style="display:inline-block;" value="Buy"   onclick='countCheckboxes();'> Buy
+        </td>
+    </tr>
+    <tr>
+        <td>
+             <h3 style="display:inline-block;">Upload your Clothes</h3>
+        </td>
+        <td>
+            <input type="file" name="myFile" required>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="Submit" value="submit" class="">
+    </tr>
+    </table>
+    </form>
+
+    </div>
+    <script type="text/javascript">
+          var password = document.getElementById("pass");
+          confirm_password = document.getElementById("confirm_pass");
+function validatePassword(){
+          if(pass.value != confirm_pass.value) {
+            confirm_pass.setCustomValidity("Passwords Don't Match");
+          } else {
+            confirm_pass.setCustomValidity('');
+          }
+        }
+        password.onchange = validatePassword;
+        confirm_pass.onkeyup = validatePassword;
+    </script>
+     <script type="text/javascript">
+     window.onload = function() {
+  // provs is an object but you can think of it as a lookup table
+  var provs = {
+        'Mumbai': ['Chembur', 'Andheri'],
+        'Pune': ['Pimpri', 'Chinchwad']
+      },
+      // just grab references to the two drop-downs
+      prov_select = document.querySelector('#prov'),
+      town_select = document.querySelector('#town');
+  // populate the provinces drop-down
+  setOptions(prov_select, Object.keys(provs));
+  // populate the town drop-down
+  setOptions(town_select, provs[prov_select.value]);
+  // attach a change event listener to the provinces drop-down
+  prov_select.addEventListener('change', function() {
+    // get the towns in the selected province
+    setOptions(town_select, provs[prov_select.value]);
+  });
+      function setOptions(dropDown, options) {
+    // clear out any existing values
+    dropDown.innerHTML = '';
+    // insert the new options into the drop-down
+    options.forEach(function(value) {
+      dropDown.innerHTML += '<option name="' + value + '">' + value + '</option>';
+    });
+  }  
+};
+    </script>
+</body>
+</html>

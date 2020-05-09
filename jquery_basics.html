@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
+    <title>J-Query Basics</title>
+</head>
+<h1><div id="word"></div></h1>
+<body class="bd">
+<input id="btn"type="button" value ="Click to change background color to yellow">
+<div id="wtime">
+        <p>Time: <span id="time"></span></p>        
+</div>    
+<script>
+$(document).ready(function(){
+    var numbers = [1, 2, 3, 4, 5, 6];
+    $.each(numbers , function (index, value){
+     $("p").append("<h"+value+">Hello</h"+value+">");
+    });
+    });
+    $(function () {
+    count = 0;
+    wordsArray = ["Hello", "Hola", "Bonjour"];
+    setInterval(function () {
+        count++;
+        $("#word").fadeOut(400, function () {
+        $(this).text(wordsArray[count % wordsArray.length]).fadeIn(400);
+        });
+    }, 2000);
+    });
+       $("#btn").click(function(){ 
+        $(".bd").css("background-color","yellow");
+        });
+        var serverTime = new Date();
+        function updateTime() {
+            serverTime = new Date(serverTime.getTime() + 1000);
+            $('#time').html(serverTime.toString( "dddd, mmmm dS, yyyy, h:MM:ss TT"));
+        }
+        $(function() {
+            updateTime();
+            setInterval(updateTime, 1000);
+        });
+    </script>
+    <div id="CounterVisitor">
+            <span class="counter-item">0</span>
+            <span class="counter-item">0</span>
+            <span class="counter-item">1</span>
+            <span class="counter-item">1</span>
+            <span class="counter-item">8</span>
+            <span class="counter-item">4</span>
+  </div>
+  <script>
+      var n = localStorage.getItem('on_load_counter');  
+      if (n === null) {
+          n = 0;
+      }  
+      n++;
+      localStorage.setItem("on_load_counter", n);
+      document.getElementById('CounterVisitor').innerHTML = n;
+      </script>
+      <script>
+            function myFunction123() {
+                var res = String.fromCharCode(65);
+                document.getElementById("demo123").innerHTML = res;
+              }
+      </script>
+      <button onclick="myFunction123()">Try fromCharCode</button>
+
+<p id="demo123"></p>
+<button onclick="myFunction()">Try endsWith</button>
+<p id="demo"></p>
+<script>
+function myFunction() {
+  var str = "Hello world, welcome to the universe.";
+  var n = str.endsWith("universe.");
+  document.getElementById("demo").innerHTML = n;
+}
+</script>
+<button onclick="myFunction12()">Try toUpperCase</button>
+<p id="demo12"></p>
+<script>
+function myFunction12() {
+  var str = "Hello World!";
+  var res = str.toUpperCase();
+  document.getElementById("demo12").innerHTML = res;
+}
+</script>
+<script>
+        $(document).ready(function(){
+            $("button").click(function(){
+              $("input:text").val("Web Technology");
+            });
+          });
+</script>
+<p>Subject: <input type="text" name="user"></p>
+<button>Set the value of the input field</button>
+</body>
+</html>
+
+
+
